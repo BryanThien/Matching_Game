@@ -12,7 +12,18 @@
  */
 
 
-shuffle(cards);
+function startRound() {
+    shuffle(cards);
+    $(".deck").empty();
+    let output = '';
+    for (i = 0; i < cards.length; i++) {
+        output += '<li class = \"card\"><i class=\"' + cards[i] + '\" ></i></li>';
+    }
+    document.querySelector(".deck").innerHTML = output;    
+}
+
+startRound();
+
 
 
 
