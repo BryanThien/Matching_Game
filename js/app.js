@@ -4,6 +4,8 @@
 
  let cards = ["fa fa-diamond", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-paper-plane-o", "fa fa-paper-anchor", "fa fa-paper-anchor", "fa fa-paper-bolt", "fa fa-paper-bolt", "fa fa-paper-cube", "fa fa-paper-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
 
+ let card = document.getElementsByClassName("card");
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -22,10 +24,6 @@ function startRound() {
     document.querySelector(".deck").innerHTML = output;    
 }
 
-startRound();
-
-
-
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -43,6 +41,10 @@ function shuffle(array) {
     return array;
 }
 
+
+
+startRound();
+card.addEventListener("click", )
 
 
 /*
