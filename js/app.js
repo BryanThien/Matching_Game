@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 
- let cards = ["fa fa-diamond", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-paper-plane-o", "fa fa-paper-anchor", "fa fa-paper-anchor", "fa fa-paper-bolt", "fa fa-paper-bolt", "fa fa-paper-cube", "fa fa-paper-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
+ let cards = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
 
  
  let repeat = document.querySelector(".restart");
