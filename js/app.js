@@ -4,7 +4,8 @@
 
  let cards = ["fa fa-diamond", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-paper-plane-o", "fa fa-paper-anchor", "fa fa-paper-anchor", "fa fa-paper-bolt", "fa fa-paper-bolt", "fa fa-paper-cube", "fa fa-paper-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
 
- let card = document.getElementsByClassName("card");
+ 
+ let repeat = document.querySelector(".restart");
 
 /*
  * Display the cards on the page
@@ -14,6 +15,8 @@
  */
 
 
+ /* Functions*/
+
 function startRound() {
     shuffle(cards);
     $(".deck").empty();
@@ -21,9 +24,15 @@ function startRound() {
     for (i = 0; i < cards.length; i++) {
         output += '<li class = \"card\"><i class=\"' + cards[i] + '\" ></i></li>';
     }
-    document.querySelector(".deck").innerHTML = output;    
-}
+    
+    document.querySelector(".deck").innerHTML = output; 
+    
+    let card = document.querySelectorAll(".card");
 
+    for (i = 0; i < card.length; i++){
+        card[i].addEventListener("click",flip);
+        }
+}
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -41,10 +50,19 @@ function shuffle(array) {
     return array;
 }
 
-
+function flip() {
+    let card = document.querySelectorAll(".card");
+    for (i = 0; i < card.length; i++){
+        card[i].classList.add("open");
+        card[i].classList.add("show");
+        }
+    
+}
 
 startRound();
-card.addEventListener("click", )
+
+repeat.addEventListener("click", startRound);
+
 
 
 /*
