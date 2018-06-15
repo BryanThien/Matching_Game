@@ -2,16 +2,20 @@
  * Create a list that holds all of your cards
  */
 
- let cards = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
+ const cards = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
 
 let openCards = [];
 let repeat = document.querySelector(".restart");
+let firstClick = "";
+let secondClick = "";
 
 startRound();
  
 /* Functions*/
 
 function startRound() {
+    firstClick = "";
+    secondClick = "";
     shuffle(cards);
     $(".deck").empty();
     let output = '';
@@ -24,15 +28,13 @@ function startRound() {
 }
 
 function SelectCreatedCards() {
-    let card = document.querySelectorAll(".card");
+    var card = document.querySelectorAll(".card");
     for (i = 0; i < card.length; i++){
-        card[i].addEventListener("click",function(event){
-           flip(event);
-        });
-        }
-}
-
-
+        card[i].addEventListener("click",function(){
+            flip(this);
+         });
+         }
+ }
 
 
 
@@ -53,30 +55,36 @@ function shuffle(array) {
 }
 
 /*creating variables to contain icon name for matching later*/
-let firstClick;
-let secondClick;
 
-function flip(event) {
-    event.target.classList.add("show");
+
+function flip(clickedElement) {
+    clickedElement.classList.add("show");
     /*Gets content and puts each in it's variable*/
-    if (!firstClick) {
-        firstClick = event.target;
+    console.log(clickedElement);
+    if (firstClick === "") {
+        firstClick = clickedElement;
+    
     } else {
-        secondClick = event.target;
+        secondClick = clickedElement;
     }
    /*Comparing values to have them be locked open and then deletes firstClick and secondClick's content for new clicks in the future*/
-   if (firstClick === secondClick) {
-        firstClick.classList.add("open");
-        secondClick.classList.add("open");
+   if (firstClick !== secondClick) {
+        if (firstClick[2] === secondClick[2]){
+            firstClick.classList.add("open");
+            secondClick.classList.add("open");
+            firstClick = "";
+            secondClick = "";
+        } else {
+        firstClick.classList.remove("show");
+        secondClick.classList.remove("show");
         firstClick = "";
         secondClick = "";
-        /*If they don't match, the class "show" is removed to make them return to not be shown*/
-   } else {
-       firstClick.classList.remove("show");
-       
-
-   }
+        }
+/*If they don't match, the class "show" is removed to make them return to not be shown*/
+   } 
 }
+   
+
 
 
 
