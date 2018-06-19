@@ -2,14 +2,14 @@
  * Create a list that holds all of your cardList
  */
 
- const cardList = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
-let cards = document.querySelectorAll("li.card");
-let repeat = document.querySelector(".restart");
+const cardList = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
+const cards = document.querySelectorAll("li.card");
+const repeat = document.querySelector(".restart");
 let firstClick = "";
 let secondClick = "";
-var clicks = 0;
-var winner = 0;
-var cardLock = "off";
+let clicks = 0;
+let winner = 0;
+let cardLock = "off";
 
 
 startRound();
@@ -17,6 +17,7 @@ startRound();
 /* Functions*/
 
 function startRound() {
+    winner = 0;
     clicks = 0;
     document.querySelector(".moves").innerHTML = 0;
     firstClick = "";
@@ -33,9 +34,9 @@ function startRound() {
 }
 
 function SelectCreatedCards() {
-    var card = document.querySelectorAll(".card");
+    let card = document.querySelectorAll(".card");
 
-    for (i = 0; i < card.length; i++){
+    for (let i = 0; i < card.length; i++){
         card[i].addEventListener("click",function(){
             flip(this);  
          });
@@ -96,12 +97,17 @@ function flip(clickedElement) {
         firstClick = "";
         secondClick = "";
         cardLock = "off"
-        },1000)
+        },700)
         
     }   
         
         if (winner === 8) {
-            console.log("you win");
+            alert(
+`
+You Won!
+You want to play again?
+`)
+            startRound();
         }
 /*If they don't match, the class "show" is removed to make them return to not be shown*/
    } 
