@@ -9,6 +9,7 @@ let firstClick = "";
 let secondClick = "";
 var clicks = 0;
 var winner = 0;
+var cardLock = "off";
 
 
 startRound();
@@ -63,7 +64,6 @@ function shuffle(array) {
 
 
 function flip(clickedElement) {
-    let cardLock = "off";
     console.log(cardLock);
  if (cardLock === "off") {
     clickedElement.classList.add("show");
@@ -95,8 +95,9 @@ function flip(clickedElement) {
         document.querySelector(".moves").innerHTML = clicks;
         firstClick = "";
         secondClick = "";
-        },1000)
         cardLock = "off"
+        },1000)
+        
     }   
         
         if (winner === 8) {
