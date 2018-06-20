@@ -1,17 +1,18 @@
-/*
- * Create a list that holds all of your cardList
- */
-
 const cardList = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
 const cards = document.querySelectorAll("li.card");
 const repeat = document.querySelector(".restart");
+
+/*Used to compare cards when clicked*/
 let firstClick = "";
 let secondClick = "";
+
 let clicks = 0;
 let winner = 0;
-let cardLock = "off";
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
+/*Used to prevent clicking a third card*/
+let cardLock = "off"; 
+/*Used for timer*/
+const minutesLabel = document.getElementById("minutes"); 
+const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
 
 startRound();
@@ -34,7 +35,7 @@ function pad(val) {
         return valString;
     }
 }
-
+/*Start of game settings*/
 function startRound() {
     totalSeconds = 0;
     winner = 0;
@@ -52,7 +53,7 @@ function startRound() {
     document.querySelector(".deck").innerHTML = output;  
     SelectCreatedCards();   
 }
-
+/*Adds event listeners to cards*/
 function SelectCreatedCards() {
     let card = document.querySelectorAll(".card");
 
@@ -81,9 +82,9 @@ function shuffle(array) {
     return array;
 }
 
-/*creating variables to contain icon name for matching later*/
 
 
+/* Actions taken when clicking a card*/
 function flip(clickedElement) {
     console.log(cardLock);
  if (cardLock === "off") {
@@ -134,20 +135,4 @@ You want to play again?
 }
 }
 
-
-
-
-
-
 repeat.addEventListener("click", startRound);
-
-
-
-/*
- *  - add the card to a *list* of "open" cardList (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cardList match
- *    + if the cardList do match, lock the cardList in the open position (put this functionality in another function that you call from this one)
- *    + if the cardList do not match, remove the cardList from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cardList have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
