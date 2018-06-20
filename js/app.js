@@ -20,12 +20,12 @@ startRound();
 /* Functions*/
 
 /* Timer */
-setInterval(setTime, 1000);
+let timerStart = setInterval(setTime, 1000);
 function setTime() {
     ++totalSeconds;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
+};
 
 function pad(val) {
     let valString = val + "";
@@ -35,7 +35,8 @@ function pad(val) {
         return valString;
     }
 }
-/*Start of game settings*/
+
+/* Start of game settings */
 function startRound() {
     totalSeconds = 0;
     winner = 0;
@@ -123,14 +124,18 @@ function flip(clickedElement) {
     }   
         
         if (winner === 8) {
-            alert(
-`
-You Won!
-You want to play again?
-`)
+      
+let seconds = document.getElementById("seconds").innerText;
+let minutes = document.getElementById("minutes").innerText;           
+console.log(seconds);
+console.log(minutes);
+alert(
+"Good Job, you won! It took you " + minutes + " minutes and " + seconds + " seconds" + " Your number of moves was " + clicks + " You want to play again?"
+)
+
+
             startRound();
         }
-/*If they don't match, the class "show" is removed to make them return to not be shown*/
    } 
 }
 }
