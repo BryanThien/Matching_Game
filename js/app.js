@@ -37,7 +37,11 @@ function pad(val) {
 }
 
 /* Start of game settings */
+
 function startRound() {
+    /* Resets Star amount*/
+    $(".fa-star").remove();
+    $(".stars").append("<li><i class=\"fa fa-star\"></i></li><li><i class=\"fa fa-star\"></i></li><li><i class=\"fa fa-star\"></i></li>");
     totalSeconds = 0;
     winner = 0;
     clicks = 0;
@@ -47,6 +51,7 @@ function startRound() {
     shuffle(cardList);
     $(".deck").empty();
     let output = '';
+
     for (i = 0; i < cardList.length; i++) {
         output += '<li class = \"card\"><i class=\"' + cardList[i] + '\" ></i></li>';
     }
@@ -87,7 +92,6 @@ function shuffle(array) {
 
 /* Actions taken when clicking a card*/
 function flip(clickedElement) {
-    console.log(cardLock);
  if (cardLock === "off") {
     clickedElement.classList.add("show");
     /*Gets content and puts each in it's variable*/
@@ -110,7 +114,6 @@ function flip(clickedElement) {
             secondClick = "";
         } else {
         cardLock = "on";
-        console.log(cardLock);
         setTimeout(function(){
         firstClick.classList.remove("show");
         secondClick.classList.remove("show");
@@ -119,18 +122,29 @@ function flip(clickedElement) {
         firstClick = "";
         secondClick = "";
         cardLock = "off"
-        },700)
-        
+        /*Star system*/
+        let moves = $(".moves").text(); 
+        console.log(moves);
+        if ( moves === "12"){
+            $(".fa-star").first().detach();
+        } 
+        if ( moves === "20"){
+            $(".fa-star").first().detach();
+        }
+        },200)
+
+      
     }   
         
-        if (winner === 8) {
+if (winner === 8) {
       
 let seconds = document.getElementById("seconds").innerText;
-let minutes = document.getElementById("minutes").innerText;           
-console.log(seconds);
-console.log(minutes);
+let minutes = document.getElementById("minutes").innerText;  
+let stars = document.querySelector(".stars")
+let finalStarScore = stars.childElementCount / 2;
+console.log(finalStarScore);
 alert(
-"Good Job, you won! It took you " + minutes + " minutes and " + seconds + " seconds" + " Your number of moves was " + clicks + " You want to play again?"
+"Good Job, you won!\n It took you " + minutes + " minutes and " + seconds + " seconds \n Your number of moves was " + clicks + "\nYour number of stars is " + finalStarScore + "\n You want to play again?" 
 )
 
 
@@ -139,5 +153,7 @@ alert(
    } 
 }
 }
+
+
 
 repeat.addEventListener("click", startRound);
