@@ -14,6 +14,7 @@ let cardLock = "off";
 const minutesLabel = document.getElementById("minutes"); 
 const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
+let stars = 3;
 
 startRound();
  
@@ -127,9 +128,12 @@ function flip(clickedElement) {
         console.log(moves);
         if ( moves === "12"){
             $(".fa-star").first().detach();
+            stars = 2;
+            
         } 
         if ( moves === "20"){
             $(".fa-star").first().detach();
+            stars = 1;
         }
         },200)
 
@@ -140,15 +144,13 @@ if (winner === 8) {
       
 let seconds = document.getElementById("seconds").innerText;
 let minutes = document.getElementById("minutes").innerText;  
-let stars = document.querySelector(".stars")
-let finalStarScore = stars.childElementCount / 2;
-console.log(finalStarScore);
-alert(
-"Good Job, you won!\n It took you " + minutes + " minutes and " + seconds + " seconds \n Your number of moves was " + clicks + "\nYour number of stars is " + finalStarScore + "\n You want to play again?" 
+debugger;
+setTimeout(function(){alert(
+"Good Job, you won!\nIt took you " + minutes + " minutes and " + seconds + " seconds\nYour number of moves was " + clicks + "\nYour number of stars is " + stars + "\nYou want to play again?" 
 )
 
-
             startRound();
+},201)
         }
    } 
 }
