@@ -93,8 +93,8 @@ function shuffle(array) {
 
 /* Actions taken when clicking a card*/
 function flip(clickedElement) {
- if (cardLock === "off") {
-    clickedElement.classList.add("show");
+ if (cardLock === "off")  {
+    clickedElement.classList.add("show", "disable");
     /*Gets content and puts each in it's variable*/
     clicks ;
     if (firstClick === "") {
@@ -106,8 +106,8 @@ function flip(clickedElement) {
    /*Comparing values to have them be locked open and then deletes firstClick and secondClick's content for new clicks in the future*/
    if (firstClick !== secondClick && secondClick !== "") {
         if (firstClick.childNodes[0].className === secondClick.childNodes[0].className){
-            firstClick.classList.add("open");
-            secondClick.classList.add("open");
+            firstClick.classList.add("open", "disabled");
+            secondClick.classList.add("open", "disabled");
             winner += 1;
             clicks += 1;
             document.querySelector(".moves").innerHTML = clicks;
@@ -124,14 +124,13 @@ function flip(clickedElement) {
         secondClick = "";
         cardLock = "off"
         /*Star system*/
-        let moves = $(".moves").text(); 
+        let moves = clicks
         console.log(moves);
-        if ( moves === "12"){
+        if ( moves === 12){
             $(".fa-star").first().detach();
             stars = 2;
-            
         } 
-        if ( moves === "20"){
+        if ( moves === 20){
             $(".fa-star").first().detach();
             stars = 1;
         }
@@ -144,7 +143,7 @@ if (winner === 8) {
       
 let seconds = document.getElementById("seconds").innerText;
 let minutes = document.getElementById("minutes").innerText;  
-debugger;
+console.log(finalStarScore);
 setTimeout(function(){alert(
 "Good Job, you won!\nIt took you " + minutes + " minutes and " + seconds + " seconds\nYour number of moves was " + clicks + "\nYour number of stars is " + stars + "\nYou want to play again?" 
 )
