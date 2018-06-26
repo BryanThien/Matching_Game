@@ -2,25 +2,23 @@ const cardList = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas f
 const cards = document.querySelectorAll("li.card");
 const repeat = document.querySelector(".restart");
 
-/*Used to compare cards when clicked*/
+//Used to compare cards when clicked
 let firstClick = "";
 let secondClick = "";
 
 let clicks = 0;
 let winner = 0;
-/*Used to prevent clicking a third card*/
+//Used to prevent clicking a third card
 let cardLock = "off"; 
-/*Used for timer*/
+//Used for timer
 const minutesLabel = document.getElementById("minutes"); 
 const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
 let stars = 3;
 
 startRound();
- 
-/* Functions*/
 
-/* Timer */
+// Timer
 let timerStart = setInterval(setTime, 1000);
 function setTime() {
     ++totalSeconds;
@@ -37,10 +35,8 @@ function pad(val) {
     }
 }
 
-/* Start of game settings */
-
+// Start of game settings and value resets
 function startRound() {
-    /* Resets Star amount*/
     $(".fa-star").remove();
     $(".stars").append("<li><i class=\"fa fa-star\"></i></li><li><i class=\"fa fa-star\"></i></li><li><i class=\"fa fa-star\"></i></li>");
     totalSeconds = 0;
@@ -52,15 +48,15 @@ function startRound() {
     shuffle(cardList);
     $(".deck").empty();
     let output = '';
-
+// Adds card html after shuffle
     for (i = 0; i < cardList.length; i++) {
         output += '<li class = \"card\"><i class=\"' + cardList[i] + '\" ></i></li>';
     }
-    
     document.querySelector(".deck").innerHTML = output;  
     SelectCreatedCards();   
 }
-/*Adds event listeners to cards*/
+
+//Adds event listeners to each card
 function SelectCreatedCards() {
     let card = document.querySelectorAll(".card");
 
@@ -91,11 +87,10 @@ function shuffle(array) {
 
 
 
-/* Actions taken when clicking a card*/
+//Actions taken when clicking a card
 function flip(clickedElement) {
  if (cardLock === "off")  {
     clickedElement.classList.add("show", "disable");
-    /*Gets content and puts each in it's variable*/
     clicks ;
     if (firstClick === "") {
         firstClick = clickedElement;
@@ -103,7 +98,7 @@ function flip(clickedElement) {
     } else {
         secondClick = clickedElement;
     }
-   /*Comparing values to have them be locked open and then deletes firstClick and secondClick's content for new clicks in the future*/
+//Compares cards for match or not, Card lock, When matched locked, Updates clicks and winner
    if (firstClick !== secondClick && secondClick !== "") {
         if (firstClick.childNodes[0].className === secondClick.childNodes[0].className){
             firstClick.classList.add("open", "disabled");
@@ -123,22 +118,23 @@ function flip(clickedElement) {
         firstClick = "";
         secondClick = "";
         cardLock = "off"
-        /*Star system*/
-        let moves = clicks
+        },200)
+    }
+        }   
+        
+//Star system
+        let moves = clicks;
         console.log(moves);
-        if ( moves === 12){
+        if ( moves === 12 && cardLock === "off"){
             $(".fa-star").first().detach();
             stars = 2;
         } 
-        if ( moves === 20){
+        if ( moves === 20 && cardLock === "off"){
             $(".fa-star").first().detach();
             stars = 1;
-        }
-        },200)
+        } 
 
-      
-    }   
-        
+//When all cards match an alert shows time, number of moves and star score
 if (winner === 8) {
       
 let seconds = document.getElementById("seconds").innerText;
@@ -153,7 +149,7 @@ setTimeout(function(){alert(
         }
    } 
 }
-}
+
 
 
 
