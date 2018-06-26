@@ -47,6 +47,7 @@ function startRound() {
     secondClick = "";
     shuffle(cardList);
     $(".deck").empty();
+    stars = 3;
     let output = '';
 // Adds card html after shuffle
     for (i = 0; i < cardList.length; i++) {
@@ -125,26 +126,24 @@ function flip(clickedElement) {
 //Star system
         let moves = clicks;
         console.log(moves);
-        if ( moves === 12 && cardLock === "off"){
+        if ( moves === 12 && stars === 3){
             $(".fa-star").first().detach();
             stars = 2;
         } 
-        if ( moves === 20 && cardLock === "off"){
+        if ( moves === 20 && stars === 2){
             $(".fa-star").first().detach();
             stars = 1;
-        } 
+        }
 
 //When all cards match an alert shows time, number of moves and star score
-if (winner === 8) {
-      
+if (winner === 8) {      
 let seconds = document.getElementById("seconds").innerText;
 let minutes = document.getElementById("minutes").innerText;  
-console.log(finalStarScore);
 setTimeout(function(){alert(
 "Good Job, you won!\nIt took you " + minutes + " minutes and " + seconds + " seconds\nYour number of moves was " + clicks + "\nYour number of stars is " + stars + "\nYou want to play again?" 
 )
 
-            startRound();
+startRound();
 },201)
         }
    } 
