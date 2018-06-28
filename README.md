@@ -13,5 +13,9 @@ This is a classic card memory game.
 * Try to match all pairs with the most stars, least amount of moves, and shortest time possible.
 * If you wish to restart a round just click the restart button in the top right.
 
-### Libraries Used
+### Resources
 * jQuery
+* Fontawesome.com
+* Loop function from http://stackoverflow.com/a/2450976
+* Starter HTML and CSS from Udacity
+

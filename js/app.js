@@ -1,4 +1,5 @@
-const cardList = ["fa fa-bug", "fa fa-bug", "fa fa-plane", "fa fa-plane", "fas fa-anchor", "fas fa-anchor", "fa fa-bus", "fa fa-bus", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"]
+const list= ["fa fa-bug", "fa fa-plane", "fas fa-anchor", "fa fa-bus", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle","fa fa-bomb"]
+const cardList = list.concat(list);
 const cards = document.querySelectorAll("li.card");
 const repeat = document.querySelector(".restart");
 
@@ -73,7 +74,7 @@ function SelectCreatedCards() {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
